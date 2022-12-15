@@ -54,4 +54,32 @@ class Migration(migrations.Migration):
                 lettings_address;
         """,
         ),
+        migrations.RunSQL(
+            """
+            INSERT INTO lettings_letting (
+                id,
+                title,
+                address_id
+            )
+            SELECT
+                id,
+                title,
+                address_id
+            FROM
+                oc_lettings_site_letting;
+        """,
+            reverse_sql="""
+            INSERT INTO lettings_letting (
+                id,
+                title,
+                address_id
+            )
+            SELECT
+                id,
+                title,
+                address_id
+            FROM
+                oc_lettings_site_letting;
+        """,
+        ),
     ]

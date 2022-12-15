@@ -1,4 +1,4 @@
-from django.test import TestCase, Client
+from django.test import Client
 from django.urls import reverse
 from lettings.models import Address, Letting
 import pytest
@@ -23,4 +23,4 @@ def test_letting_page_code_status_and_title():
     response = client.get(reverse("letting", kwargs={"letting_id": 1}))
 
     assert response.status_code == 200
-    assert "<title>Lettings</title>" in response.content.decode()
+    assert "<title>test_title</title>" in response.content.decode()
