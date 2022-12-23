@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: cimg/python:3.11.1-alpine3.17
+      - image: cimg/python:3.11.1
       - auth:
         username: airdeon
         password: dckr_pat_TG3oT0PEuKZqA4W9zOMmLaO36sI
