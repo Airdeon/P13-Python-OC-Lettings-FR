@@ -1,8 +1,10 @@
-FROM python:3.10
+FROM python:3.11.1-alpine3.17
 ENV PYTHONUNBUFFERED 1
 RUN mkdir /code
 WORKDIR /code
 COPY requirements.txt /code/
 RUN pip install -r requirements.txt
 COPY . /code/
-CMD python3 manage.py runserver 0.0.0.0:8000
+EXPOSE 8000
+VOLUME /code/logs
+CMD python manage.py runserver 0.0.0.0:8000
