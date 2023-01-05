@@ -26,13 +26,13 @@ jobs:
           destination: python_app
   deploy:
   docker:
-      - image: cimg/python:3.11.1
-          auth:
-            username: airdeon
-            password: dckr_pat_TG3oT0PEuKZqA4W9zOMmLaO36sI
+    - image: cimg/python:3.11.1
+      auth:
+        username: airdeon
+        password: dckr_pat_TG3oT0PEuKZqA4W9zOMmLaO36sI
   steps:
-      - checkout
-      - run:
-          name: Deploy to Heroku
-          command: |
-            git push https://heroku:5826d1af-6a63-4d47-b26a-279f50714704@git.heroku.com/oc-lettings-mb.git main
+    - checkout
+    - run:
+        name: Deploy to Heroku
+        command: |
+          git push https://heroku:5826d1af-6a63-4d47-b26a-279f50714704@git.heroku.com/oc-lettings-mb.git main
