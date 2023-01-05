@@ -3,22 +3,19 @@ jobs:
   build:
     docker:
       - image: cimg/python:3.11.1
-      - auth:
-        username: airdeon
-        password: dckr_pat_TG3oT0PEuKZqA4W9zOMmLaO36sI
     steps:
       - checkout
-      #- restore_cache:
-      #    key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
+      - restore_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
       - run:
           command: |
             python3 -m venv venv
             . venv/bin/activate
             pip install -r requirements.txt
-      #- save_cache:
-      #    key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
-      #    paths:
-      #      - "venv"
+      - save_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
+          paths:
+            - "venv"
       - run:
           name: Running tests
           command: |
@@ -27,3 +24,15 @@ jobs:
       - store_artifacts:
           path: test-reports/
           destination: python_app
+  deploy:
+  docker:
+      - image: cimg/python:3.11.1
+          auth:
+            username: airdeon
+            password: dckr_pat_TG3oT0PEuKZqA4W9zOMmLaO36sI
+  steps:
+      - checkout
+      - run:
+          name: Deploy to Heroku
+          command: |
+            git push https://heroku:5826d1af-6a63-4d47-b26a-279f50714704@git.heroku.com/oc-lettings-mb.git main
