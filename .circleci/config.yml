@@ -21,7 +21,9 @@ jobs:
             - "venv"
       - run:
           name: execute linter
-          command: flake8
+          command: |
+            . venv/bin/activate
+            flake8
       - run:
           name: Running tests
           command: pytest
