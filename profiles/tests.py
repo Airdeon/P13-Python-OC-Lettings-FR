@@ -4,6 +4,7 @@ from profiles.models import Profile
 from django.contrib.auth.models import User
 import pytest
 
+
 # Create your tests here.
 @pytest.mark.django_db
 def test_profiles_index_page_code_status_and_title():
@@ -16,7 +17,11 @@ def test_profiles_index_page_code_status_and_title():
 @pytest.mark.django_db
 def test_profiles_page_code_status_and_title():
     client = Client()
-    user = User.objects.create(password="jqsldfycxheyu", username="username_title_test", email="test@test.fr")
+    user = User.objects.create(
+        password="jqsldfycxheyu",
+        username="username_title_test",
+        email="test@test.fr"
+    )
     Profile.objects.create(user=user, favorite_city="Wanaka")
     response = client.get(reverse("profile", kwargs={"username": "username_title_test"}))
 
