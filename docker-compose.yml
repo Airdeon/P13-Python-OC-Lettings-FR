@@ -7,4 +7,4 @@ services:
       - .:/code
       - /oc-lettings-site.sqlite3
     ports:
-      - "8000:8000"
+      - "5000:5000"
