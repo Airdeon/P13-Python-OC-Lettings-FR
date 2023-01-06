@@ -32,6 +32,8 @@ jobs:
       - store_artifacts:
           path: test-reports/
           destination: python_app
+      - setup_remote_docker:
+          docker_layer_caching: true
       - run:
           name: Deploy to Dockerhub
           command: |
