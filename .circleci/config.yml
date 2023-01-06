@@ -26,7 +26,9 @@ jobs:
             flake8
       - run:
           name: Running tests
-          command: pytest
+          command: |
+            . venv/bin/activate
+            pytest
       - store_artifacts:
           path: test-reports/
           destination: python_app
