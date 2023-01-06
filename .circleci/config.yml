@@ -39,8 +39,8 @@ jobs:
           command: |
             docker build -t oc-lettings-mb .
             docker login --username $DOCKERHUB_LOGIN --password $DOCKERHUB_PASSWORD
-            docker tag oc-lettings-mb $DOCKERHUB_LOGIN/oc-lettings-:$CIRCLE_SHA1
-            docker push $DOCKERHUB_LOGIN/oc-lettings-:$CIRCLE_SHA1
+            docker tag oc-lettings-mb $DOCKERHUB_LOGIN/oc-lettings-mb:$CIRCLE_SHA1
+            docker push $DOCKERHUB_LOGIN/oc-lettings-mb:$CIRCLE_SHA1
       - run:
           name: Deploy to Heroku
           command: |
