@@ -1,6 +1,4 @@
 version: 2.1
-orbs:
-  heroku: circleci/heroku@2.0.0
 jobs:
   build:
     docker:
@@ -46,6 +44,7 @@ jobs:
       - run:
           name: Deploy to Heroku
           command: |
+            sudo curl https://cli-assets.heroku.com/install.sh | sh
             heroku container:login
             heroku container:push -a oc-lettings-mb web
             heroku container:release -a oc-lettings-mb web
