@@ -7,4 +7,4 @@ RUN pip install -r requirements.txt
 COPY . /code/
 EXPOSE 5000
 VOLUME /code/logs
-CMD python manage.py runserver 0.0.0.0:5000
+CMD gunicorn oc_lettings_site.wsgi --bind 0.0.0.0:$PORT
