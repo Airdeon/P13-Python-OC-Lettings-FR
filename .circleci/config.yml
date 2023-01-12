@@ -6,6 +6,7 @@ jobs:
         environment:
           SECRET_KEY: $SECRET_KEY
           SENTRY_KEY: $SENTRY_KEY
+          DEBUG: $DEBUG
     steps:
       - checkout
       - restore_cache:
