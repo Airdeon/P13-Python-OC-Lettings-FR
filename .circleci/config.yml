@@ -4,8 +4,8 @@ jobs:
     docker:
       - image: cimg/python:3.11.1
         environment:
-          SECRET_KEY:$SECRET_KEY
-          SENTRY_KEY:$SENTRY_KEY
+          SECRET_KEY: $SECRET_KEY
+          SENTRY_KEY: $SENTRY_KEY
     steps:
       - checkout
       - restore_cache:
