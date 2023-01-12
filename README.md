@@ -75,3 +75,44 @@ Utilisation de PowerShell, comme ci-dessus sauf :
 
 - Pour activer l'environnement virtuel, `.\venv\Scripts\Activate.ps1` 
 - Remplacer `which <my-command>` par `(Get-Command <my-command>).Path`
+
+### Déploiement Dockerhub et Heroku
+
+- Ajouter le git concerné dans votre dashboard CircleCI
+- Mettre a jour sur CircleCI vos variable d'environement :
+  - DOCKERHUB_LOGIN
+  - DOCKERHUB_PASSWORD
+  - HEROKU_API_KEY
+  - HEROKU_APP_NAME
+  - SECRET_KEY
+  - SENTRY_KEY
+  - DEBUG
+- Mettre a jour sur heroku vos variable d'environement :
+  - SECRET_KEY
+  - SENTRY_KEY
+  - DEBUG
+- faire un push sur la branch main du git :
+  ```
+  git commit
+  git push
+  ```
+
+le déploiement se fait ensuite automatiquement sur dockerhub et heroku
+
+### Acces project actuel heroku
+
+https://oc-lettings-mb.herokuapp.com/
+
+### Acces local
+
+- crée un fichier .env avec les variable suivante : 
+  - SECRET_KEY
+  - SENTRY_KEY
+  - DEBUG
+- Lancer la commande suivante en prenant soin de bien de modifier le lien vers votre fichier .env si besoin
+
+```
+docker run --env-file ./.env -e "PORT=5000" -p 5000:5000 airdeon/oc-lettings-mb
+```
+
+http://localhost:5000/
