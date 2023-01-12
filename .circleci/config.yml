@@ -37,9 +37,10 @@ jobs:
       - run:
           name: Deploy to Dockerhub
           command: |
-            docker build -t oc-lettings-mb:latest .
+            docker build -t oc-lettings-mb .
             docker login --username $DOCKERHUB_LOGIN --password $DOCKERHUB_PASSWORD
             docker tag oc-lettings-mb $DOCKERHUB_LOGIN/oc-lettings-mb:$CIRCLE_SHA1
+            docker tag oc-lettings-mb $DOCKERHUB_LOGIN/oc-lettings-mb:latest
             docker push $DOCKERHUB_LOGIN/oc-lettings-mb --all-tags
       - run:
           name: Deploy to Heroku
