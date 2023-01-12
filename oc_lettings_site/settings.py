@@ -127,7 +127,7 @@ STATIC_URL = "/static/"
 SENTRY_KEY = os.environ.get('SENTRY_KEY')
 if SENTRY_KEY is None:
     SENTRY_KEY = config("SENTRY_KEY")
-    
+
 sentry_sdk.init(
     dsn=SENTRY_KEY,
     integrations=[
