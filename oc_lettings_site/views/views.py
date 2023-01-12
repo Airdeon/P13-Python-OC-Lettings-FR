@@ -1,5 +1,6 @@
 from django.shortcuts import render
-
+from django.http import HttpResponseNotFound
+from sentry_sdk import capture_message
 
 # Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 # Quisque molestie quam lobortis leo consectetur ullamcorper non id est.
@@ -12,3 +13,10 @@ from django.shortcuts import render
 # Praesent volutpat porttitor magna, non finibus neque cursus id.
 def index(request):
     return render(request, "oc_lettings_site/index.html")
+
+
+def my_custom_page_not_found_view(*args, **kwargs):
+    capture_message("Page not found!", level="error")
+
+    # return any response here, e.g.:
+    return HttpResponseNotFound("Not found")
