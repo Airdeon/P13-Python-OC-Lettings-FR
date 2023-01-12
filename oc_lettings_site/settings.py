@@ -14,7 +14,7 @@ SECRET_KEY = "fp$9^593hsriajg$_%=5trot9g!1qa@ew(o-1#@=&4%=hp46(s"
 DEBUG = True
 
 ALLOWED_HOSTS = ["oc-lettings-mb.herokuapp.com", '127.0.0.1']
-CSRF_TRUSTED_ORIGINS = ["https://*.oc-lettings-mb.herokuapp.com", '127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ["https://*.oc-lettings-mb.herokuapp.com", 'https://*.127.0.0.1']
 
 # Application definition
 
@@ -109,4 +109,5 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 STATIC_URL = "/static/"
