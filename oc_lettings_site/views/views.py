@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseNotFound
 from sentry_sdk import capture_message
 
+
 # Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 # Quisque molestie quam lobortis leo consectetur ullamcorper non id est.
 # Praesent dictum, nulla eget feugiat sagittis, sem mi convallis eros,
