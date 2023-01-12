@@ -49,3 +49,11 @@ jobs:
             heroku container:login
             heroku container:push -a oc-lettings-mb web
             heroku container:release -a oc-lettings-mb web
+workflows:
+  my_workflow:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - main
