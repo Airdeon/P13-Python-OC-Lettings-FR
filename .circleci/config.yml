@@ -37,7 +37,7 @@ jobs:
       - run:
           name: Deploy to Dockerhub
           command: |
-            docker build -t oc-lettings-mb .
+            docker build -t oc-lettings-mb:latest .
             docker login --username $DOCKERHUB_LOGIN --password $DOCKERHUB_PASSWORD
             docker tag oc-lettings-mb $DOCKERHUB_LOGIN/oc-lettings-mb:$CIRCLE_SHA1
             docker push $DOCKERHUB_LOGIN/oc-lettings-mb:$CIRCLE_SHA1
