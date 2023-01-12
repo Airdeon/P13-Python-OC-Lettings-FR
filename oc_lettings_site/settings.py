@@ -12,7 +12,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
-if SECRET_KEY == "":
+if SECRET_KEY is None:
     SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -124,8 +124,12 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 STATIC_URL = "/static/"
 
+SENTRY_KEY = os.environ.get('SENTRY_KEY')
+if SENTRY_KEY is None:
+    SENTRY_KEY = config("SENTRY_KEY")
+    
 sentry_sdk.init(
-    dsn=os.environ.get('SENTRY_KEY'),
+    dsn=SENTRY_KEY,
     integrations=[
         DjangoIntegration(),
     ],
